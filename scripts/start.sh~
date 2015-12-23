@@ -1,0 +1,5 @@
+#!/bin/bash
+mongod --dbpath db & 
+sleep 10
+nodejs app.js
+
