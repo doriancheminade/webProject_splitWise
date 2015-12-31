@@ -1,38 +1,60 @@
 
 {
-payed_by:'dilbert',
-split_with:['evil_boss'],
-description:'expensive pen',
-price:'100',
-currency:'USD',
-image:'',
-date:'',
-type:'furniture'
+"payed_by":"dilbert",
+"split_with":
+    [{
+        "name":"evil_boss",
+        "owe":"50"
+    }],
+"description":"expensive pen",
+"price":"100",
+"currency":"USD",
+"image":"",
+"date":"",
+"type":"furniture"
 }{
-payed_by:'dilbert',
-split_with:['dogbert', 'ratbert'],
-description:'food',
-price:'254',
-currency:'USD',
-image:'',
-date:'',
-type:'grocery'
+"payed_by":"dilbert",
+"split_with":
+    [{
+        "name":"dogbert",
+        "owe":"25"
+    },{
+        "name":"ratbert",
+        "owe":"25"
+    }],
+"description":"food",
+"price":"254",
+"currency":"USD",
+"image":"",
+"date":"",
+"type":"grocery"
 }{
-payed_by:'ratbert',
-split_with:['dilbert'],
-description:'it s a tutu',
-price:'22',
-currency:'CNY',
-image:'',
-date:'',
-type:'clothing'
+"payed_by":"ratbert",
+"split_with":
+    [{
+        "name":"dilbert",
+        "owe":"22"
+    }],
+"description":"it s a tutu",
+"price":"22",
+"currency":"CNY",
+"image":"",
+"date":"",
+"type":"clothing"
 }{
-payed_by:'alice',
-split_with:['rajesh','wally'],
-description:'birthday card',
-price:'12.99',
-currency:'USD',
-image:'',
-date:'',
-type:'gift'
+"payed_by":"alice",
+"split_with":
+    [{
+        "name":"rajesh",
+        "owe":"4"
+    },{
+        "name":"wally",
+        "owe":"4"}
+    ],
+"description":"birthday card",
+"price":"12.99",
+"currency":"USD",
+"image":"",
+"date":"",
+"type":"gift"
 }
