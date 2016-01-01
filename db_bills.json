@@ -1,60 +1,67 @@
-
+[
 {
 "payed_by":"dilbert",
 "split_with":
     [{
         "name":"evil_boss",
-        "owe":"50"
+        "owe":50,
+        "payed":0
     }],
 "description":"expensive pen",
-"price":"100",
+"price":100,
 "currency":"USD",
 "image":"",
 "date":"",
 "type":"furniture"
-}{
+},{
 "payed_by":"dilbert",
 "split_with":
     [{
         "name":"dogbert",
-        "owe":"25"
+        "owe":0,
+        "payed":25
     },{
         "name":"ratbert",
-        "owe":"25"
+        "owe":5,
+        "payed":20
     }],
 "description":"food",
-"price":"254",
+"price":254,
 "currency":"USD",
 "image":"",
 "date":"",
 "type":"grocery"
-}{
+},{
 "payed_by":"ratbert",
 "split_with":
     [{
         "name":"dilbert",
-        "owe":"22"
+        "owe":1,
+        "payed":21
     }],
 "description":"it s a tutu",
-"price":"22",
+"price":22,
 "currency":"CNY",
 "image":"",
 "date":"",
 "type":"clothing"
-}{
+},{
 "payed_by":"alice",
 "split_with":
     [{
         "name":"rajesh",
-        "owe":"4"
+        "owe":4,
+        "payed":0
     },{
         "name":"wally",
-        "owe":"4"}
-    ],
+        "owe":3,
+        "payed":1
+    }],
 "description":"birthday card",
-"price":"12.99",
+"price":12.99,
 "currency":"USD",
 "image":"",
 "date":"",
 "type":"gift"
 }
+]
