@@ -1,0 +1,21 @@
+
+
+<div class=".col-md-4 split_col" style="background-color: #E0E0E0">
+    <pre>Balance</pre>
+</div>
+
+<div class=".col-md-4 split_col">
+    <div class="btn-group">
+        <button class="btn btn-primary" ng-click="balance.get_total()">total</button>
+        <button class="btn btn-primary" >schedule</button>
+        <button class="btn btn-primary" >trend</button>
+    </div>
+    
+    <div id="balance_total">
+        Total <br/>
+        payed:{{balance.total.payed}} <br/>
+        received:{{balance.total.received}} <br/>
+        owed:{{balance.total.owed}} <br/>
+        debt:{{balance.total.debt}} <br/>
+    </div>
+</div>

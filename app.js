@@ -54,52 +54,8 @@ MongoClient.connect(url, function(err, db) {
             }              
         ]).toArray(function(err, d){
 		    if (err) return resp.json(err)
-		    resp.json(d);
-		}) 
-        /*
-        var b1 = bills.aggregate([
-            {$match: {payed_by: u}},
-            {$group:{
-                _id:"$payed_by",
-                //what the user payed
-                out: {$sum: "$price"},
-            }}
-        ]);
-        
-        var b2 = bills.aggregate([
-            {$match: {payed_by: u}},
-            {$unwind: "$split_with"},
-            {$group:{
-                _id:"$payed_by",
-                //what the user has been payed
-                in1: {$sum: "$split_with.payed"},
-                //what the user owe
-                in2: {$sum: "$split_with.owe"}
-            }}
-        ]);
-        
-        var b3 = bills.aggregate([
-            {$match: {split_with: {$elemMatch: {name: u}}}},
-            {$unwind: "$split_with"},
-            {$group: {
-                _id: "$split_with.name",
-                //what the user owe
-                debt:{$sum: "$split_with.owe"}
-            }}
-        ]);
-        
-        b1.toArray(function(err, d1){
-		    if (err) return resp.json(err)
-        b2.toArray(function(err, d2){
-		    if (err) return resp.json(err)
-        b3.toArray(function(err, d3){
-		    if (err) return resp.json(err)
-		    resp.json(d1[0],d2[0],d3[0]);
-		})  
-		}) 
-		}) 
-		*/
-		
+		    resp.json(d[0]);
+		})		
     })
 
     app.listen(port, function() {

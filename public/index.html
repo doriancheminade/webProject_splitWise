@@ -1,6 +1,21 @@
 <html>
 <head></head>
-<body>
-    index page
+<body ng-app="indexModule">
+    <div class="split_vert">
+        <div class=".col-md-4 split_col">
+            <a href="#balance"><button class="btn btn-primary">balance</button></a>
+        </div>
+        <div ng-view class="split_2cols">
+        </div>
+    </div>
+    
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/balanceCtrlr.js"></script>
+    <link href="bower_components/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 </body>
 </html>
