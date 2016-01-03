@@ -3,7 +3,10 @@
 <body ng-app="indexModule">
     <div class="split_vert">
         <div class=".col-md-4 split_col">
-            <a href="#balance"><button class="btn btn-primary">balance</button></a>
+            <a href="#balance"><button class="btn btn-primary">
+                <span class="glyphicon glyphicon-list"></span>
+                all expences
+            </button></a>
         </div>
         <div ng-view class="split_2cols">
         </div>
@@ -15,6 +18,7 @@
     <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
     <script src="js/index.js"></script>
     <script src="js/balanceCtrlr.js"></script>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="bower_components/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/index.css">
 </body>

@@ -1,12 +1,15 @@
 
 
-<div class=".col-md-4 split_col" style="background-color: #E0E0E0">
+<div class=".col-md-4 split_col">
     <div id="bill_total_list">
-        <pre>Balance</pre>
-        <div ng-repeat="bill in balance.bills">
-            description: {{bill.description}}<br/>
-            price: {{bill.price}}<br/><br/>
-        </div>
+        <h2>Balance</h2>
+        <table class="table">
+            <tr ng-repeat="bill in balance.bills">
+                <td ><span>{{bill.date | date:'yyyy MM dd'}}</span></td>
+                <td>{{bill.description}}</td>
+                <td>{{bill.currency}} {{bill.price}}</td>
+            </tr>
+        </table>
         <div>
             <button class="btn btn-primary" ng-click="balance.get_list()">see more</button>            
         </div>
@@ -15,16 +18,22 @@
 
 <div class=".col-md-4 split_col">
     <div class="btn-group">
-        <button class="btn btn-primary" ng-click="balance.get_total()">total</button>
-        <button class="btn btn-primary" >schedule</button>
-        <button class="btn btn-primary" >trend</button>
+        <button class="btn btn-primary" ng-click="balance.get_total()">
+            <span class="glyphicon glyphicon-stats"></span>
+        </button>
+        <button class="btn btn-primary" >
+            <span class="glyphicon glyphicon-calendar"></span>
+        </button>
+        <button class="btn btn-primary" >
+            <span class="glyphicon glyphicon-align-justify"></span>
+        </button>
     </div>
     
     <div id="balance_total">
-        Total <br/>
-        payed:{{balance.total.payed}} <br/>
-        received:{{balance.total.received}} <br/>
-        owed:{{balance.total.owed}} <br/>
-        debt:{{balance.total.debt}} <br/>
+        <h3>Total</h3>
+        <h4>payed:<br/>{{balance.total.payed}}<h4>
+        <h4>received:<br/>{{balance.total.received}}<h4>
+        <h4>owed:<br/>{{balance.total.owed}}<h4>
+        <h4>debt:<br/>{{balance.total.debt}}<h4>
     </div>
 </div>

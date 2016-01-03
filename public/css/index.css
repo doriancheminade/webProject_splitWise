@@ -1,3 +1,6 @@
+/*ui-bootstrap stuf*/
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
 .split_vert {
     display: flex;
     flex:1 0 auto;

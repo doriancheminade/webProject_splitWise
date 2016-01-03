@@ -1,5 +1,4 @@
-angular.module('indexModule', ['ngRoute','ngResource']);                                                                             
-
+angular.module('indexModule',['ngRoute','ngResource','ui.bootstrap']);
 angular.module('indexModule')
     .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {                        
         $routeProvider                                                                
