@@ -11,7 +11,7 @@
 "price":100,
 "currency":"USD",
 "image":"",
-"date":"",
+"date":"1452447985",
 "type":"furniture"
 },{
 "payed_by":"dilbert",
@@ -29,7 +29,7 @@
 "price":254,
 "currency":"USD",
 "image":"",
-"date":"",
+"date":"1451843185",
 "type":"grocery"
 },{
 "payed_by":"ratbert",
@@ -43,7 +43,7 @@
 "price":22,
 "currency":"CNY",
 "image":"",
-"date":"",
+"date":"1454521585",
 "type":"clothing"
 },{
 "payed_by":"alice",
@@ -61,7 +61,175 @@
 "price":12.99,
 "currency":"USD",
 "image":"",
-"date":"",
+"date":"1483465585",
 "type":"gift"
+},{
+"payed_by":"dilbert",
+"split_with":
+    [{
+        "name":"catbert",
+        "owe":1,
+        "payed":0.20
+    }],
+"description":"coffee",
+"price":1,
+"currency":"USD",
+"image":"",
+"date":"1452447985",
+"type":"food"
+},{
+"payed_by":"dilbert",
+"split_with":
+    [{
+        "name":"catbert",
+        "owe":1,
+        "payed":0.20
+    }],
+"description":"coffee",
+"price":1,
+"currency":"USD",
+"image":"",
+"date":"1452447985",
+"type":"food"
+},{
+"payed_by":"dilbert",
+"split_with":
+    [{
+        "name":"catbert",
+        "owe":1,
+        "payed":0.20
+    }],
+"description":"coffee",
+"price":1,
+"currency":"USD",
+"image":"",
+"date":"1452447990",
+"type":"food"
+},{
+"payed_by":"dilbert",
+"split_with":
+    [{
+        "name":"catbert",
+        "owe":1,
+        "payed":0.20
+    }],
+"description":"coffee",
+"price":1,
+"currency":"USD",
+"image":"",
+"date":"1452448000",
+"type":"food"
+},{
+"payed_by":"dilbert",
+"split_with":
+    [{
+        "name":"catbert",
+        "owe":1,
+        "payed":0.20
+    }],
+"description":"coffee",
+"price":1,
+"currency":"USD",
+"image":"",
+"date":"1452448001",
+"type":"food"
+},{
+"payed_by":"dilbert",
+"split_with":
+    [{
+        "name":"catbert",
+        "owe":1,
+        "payed":0.20
+    }],
+"description":"coffee",
+"price":1,
+"currency":"USD",
+"image":"",
+"date":"1452448002",
+"type":"food"
+},{
+"payed_by":"dilbert",
+"split_with":
+    [{
+        "name":"catbert",
+        "owe":1,
+        "payed":0.20
+    }],
+"description":"coffee",
+"price":1,
+"currency":"USD",
+"image":"",
+"date":"1452448010",
+"type":"food"
+},{
+"payed_by":"dilbert",
+"split_with":
+    [{
+        "name":"catbert",
+        "owe":1,
+        "payed":0.20
+    }],
+"description":"coffee",
+"price":1,
+"currency":"USD",
+"image":"",
+"date":"1452448020",
+"type":"food"
+},{
+"payed_by":"dilbert",
+"split_with":
+    [{
+        "name":"catbert",
+        "owe":1,
+        "payed":0.20
+    }],
+"description":"coffee",
+"price":1,
+"currency":"USD",
+"image":"",
+"date":"1452448030",
+"type":"food"
+},{
+"payed_by":"dilbert",
+"split_with":
+    [{
+        "name":"catbert",
+        "owe":1,
+        "payed":0.20
+    }],
+"description":"coffee",
+"price":1,
+"currency":"USD",
+"image":"",
+"date":"1452448040",
+"type":"food"
+},{
+"payed_by":"dilbert",
+"split_with":
+    [{
+        "name":"catbert",
+        "owe":1,
+        "payed":0.20
+    }],
+"description":"coffee",
+"price":1,
+"currency":"USD",
+"image":"",
+"date":"1452448050",
+"type":"food"
+},{
+"payed_by":"dilbert",
+"split_with":
+    [{
+        "name":"catbert",
+        "owe":1,
+        "payed":0.20
+    }],
+"description":"coffee",
+"price":1,
+"currency":"USD",
+"image":"",
+"date":"1452448070",
+"type":"food"
 }
 ]

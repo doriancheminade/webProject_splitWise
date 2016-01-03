@@ -8,9 +8,18 @@ angular.module('indexModule').factory("balanceTotal",['$resource', function($res
         }
     });
 }]);
+angular.module('indexModule').factory("billList",['$resource', function($resource) {
+    return $resource("/api/bill/list",{},{
+        get: {
+            method:'GET', 
+            params:{user:'@user',n:'@n'},
+            isArray:true
+        }
+    });
+}]);
 angular.module('indexModule').controller('balanceCtrlr', [              
-    '$scope','$routeParams','balanceTotal',                             
-    function balanceCtrlr($scope,$routeParams,balanceTotal) { 
+    '$scope','$routeParams','balanceTotal','billList',                             
+    function balanceCtrlr($scope, $routeParams, balanceTotal, billList) { 
         $scope.balance = {};
         
         $scope.balance.get_total = function(){
@@ -20,6 +29,20 @@ angular.module('indexModule').controller('balanceCtrlr', [
                 },function(err){
                     console.log(err);
                 })    
-        }                    
+        };
+        
+        $scope.balance.bills = [];
+        $scope.balance.get_list = function(){
+            billList.get({user:$routeParams.user, n:$scope.balance.bills.length},'',
+                function(data){
+                    var a = $scope.balance.bills.concat(data);
+                    $scope.balance.bills = a;
+                },function(err){
+                    console.log(err);
+                }
+             )
+        };        
+        $scope.balance.get_list();
+                           
     }                                           
 ]); 

@@ -17,10 +17,9 @@ MongoClient.connect(url, function(err, db) {
     })
     app.get("/api/bill/total/", function(req, resp){
         var u = req.query.user;
-        var $u= "$"+u;
         var e = {"split_with":{}};
         
-        var b = bills.aggregate([{
+        bills.aggregate([{
             $match: {
                 $or: 
                 [{payed_by: u}, 
@@ -56,6 +55,29 @@ MongoClient.connect(url, function(err, db) {
 		    if (err) return resp.json(err)
 		    resp.json(d[0]);
 		})		
+    })
+    app.get("/api/bill/list/",function(req,resp){
+        var u = req.query.user;
+        var n = parseInt(req.query.n);
+        var l = 10;
+        
+        bills.aggregate([{
+            $match: {
+                $or: 
+                [{payed_by: u}, 
+                {split_with: {$elemMatch: {name: u}}}
+                ]}
+            },{
+            $sort: {date:-1}
+            },{
+            $skip: n
+            },{
+            $limit: l
+            }
+        ]).toArray(function(err, d){
+		    if (err) return resp.json(err)
+		    resp.json(d);
+		})
     })
 
     app.listen(port, function() {

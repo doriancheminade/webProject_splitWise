@@ -1,7 +1,16 @@
 
 
 <div class=".col-md-4 split_col" style="background-color: #E0E0E0">
-    <pre>Balance</pre>
+    <div id="bill_total_list">
+        <pre>Balance</pre>
+        <div ng-repeat="bill in balance.bills">
+            description: {{bill.description}}<br/>
+            price: {{bill.price}}<br/><br/>
+        </div>
+        <div>
+            <button class="btn btn-primary" ng-click="balance.get_list()">see more</button>            
+        </div>
+    </div>
 </div>
 
 <div class=".col-md-4 split_col">
