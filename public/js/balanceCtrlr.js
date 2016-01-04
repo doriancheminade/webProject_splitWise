@@ -42,6 +42,28 @@ angular.module('indexModule').controller('balanceCtrlr', [
                 }
              )
         };        
+        $scope.balance.bill = {};
+        $scope.balance.bill.ipayed = function(bill){
+            if(bill.payed_by==$routeParams.user){
+                return bill.price;
+            }else{
+                for(var i=0;i<bill.split_with.length;i++){
+                    if(bill.split_with[i].name==$routeParams.user){
+                        return bill.split_with[i].payed;
+                    }
+                }
+            }
+        }      
+        $scope.balance.bill.imowed = function(bill){
+            if(bill.payed_by==$routeParams.user){
+                var r = 0;
+                for(var i=0;i<bill.split_with.length;i++){
+                    r += bill.split_with[i].owe;
+                }
+                return r;
+            }            
+            return 0;
+        }
         $scope.balance.get_list();
                            
     }                                           

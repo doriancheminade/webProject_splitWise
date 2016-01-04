@@ -3,13 +3,30 @@
 <div class=".col-md-4 split_col">
     <div id="bill_total_list">
         <h2>Balance</h2>
-        <table class="table">
-            <tr ng-repeat="bill in balance.bills">
-                <td ><span>{{bill.date | date:'yyyy MM dd'}}</span></td>
-                <td>{{bill.description}}</td>
-                <td>{{bill.currency}} {{bill.price}}</td>
-            </tr>
-        </table>
+        
+        <uib-accordion close-others="true">
+            <uib-accordion-group heading="{{bill.payed_by}}" ng-repeat="bill in balance.bills">
+                <uib-accordion-heading>
+                    <table><tr>
+                    <td ><span>{{bill.date | date:'yyyy MM dd'}}</span></td>
+                    <td>{{bill.description}}</td>
+                    <td>you paid<br/>{{bill.currency}} {{balance.bill.ipayed(bill)}}</td>
+                    <td>you are owed<br/>{{bill.currency}} {{balance.bill.imowed(bill)}}</td>
+                    </tr></table>
+                </uib-accordion-heading>
+                {{bill.description}}</br>
+                {{bill.currency}}{{bill.price}}
+                <table>
+                    <tr ng-repeat="u in bill.split_with">
+                        <td> &lt avatar here &gt</td>
+                        <td>
+                            {{u.name}} payed {{bill.currency}}{{u.payed}} and owes {{bill.currency}}{{u.owe}}
+                        </td>
+                    </tr>
+                </table>
+            </uib-accordion-group>
+        </uib-accordion>
+        
         <div>
             <button class="btn btn-primary" ng-click="balance.get_list()">see more</button>            
         </div>
@@ -37,3 +54,4 @@
         <h4>debt:<br/>{{balance.total.debt}}<h4>
     </div>
 </div>
+<link href="css/balance.css" rel="stylesheet" type="text/css">
