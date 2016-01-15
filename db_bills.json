@@ -9,7 +9,7 @@
     }],
 "description":"expensive pen",
 "price":100,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1452447985",
 "type":"furniture"
@@ -27,7 +27,7 @@
     }],
 "description":"food",
 "price":254,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1451843185",
 "type":"grocery"
@@ -41,7 +41,7 @@
     }],
 "description":"it s a tutu",
 "price":22,
-"currency":"CNY",
+"currency-display":"CNY",
 "image":"",
 "date":"1454521585",
 "type":"clothing"
@@ -59,7 +59,7 @@
     }],
 "description":"birthday card",
 "price":12.99,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1483465585",
 "type":"gift"
@@ -73,7 +73,7 @@
     }],
 "description":"coffee",
 "price":1,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1452447985",
 "type":"food"
@@ -87,7 +87,7 @@
     }],
 "description":"coffee",
 "price":1,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1452447985",
 "type":"food"
@@ -101,7 +101,7 @@
     }],
 "description":"coffee",
 "price":1,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1452447990",
 "type":"food"
@@ -115,7 +115,7 @@
     }],
 "description":"coffee",
 "price":1,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1452448000",
 "type":"food"
@@ -129,7 +129,7 @@
     }],
 "description":"coffee",
 "price":1,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1452448001",
 "type":"food"
@@ -143,7 +143,7 @@
     }],
 "description":"coffee",
 "price":1,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1452448002",
 "type":"food"
@@ -157,7 +157,7 @@
     }],
 "description":"coffee",
 "price":1,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1452448010",
 "type":"food"
@@ -171,7 +171,7 @@
     }],
 "description":"coffee",
 "price":1,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1452448020",
 "type":"food"
@@ -185,7 +185,7 @@
     }],
 "description":"coffee",
 "price":1,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1452448030",
 "type":"food"
@@ -199,7 +199,7 @@
     }],
 "description":"coffee",
 "price":1,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1452448040",
 "type":"food"
@@ -213,7 +213,7 @@
     }],
 "description":"coffee",
 "price":1,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1452448050",
 "type":"food"
@@ -227,7 +227,7 @@
     }],
 "description":"coffee",
 "price":1,
-"currency":"USD",
+"currency-display":"USD",
 "image":"",
 "date":"1452448070",
 "type":"food"
