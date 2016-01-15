@@ -1,11 +1,21 @@
 var express = require("express")
 var app = express()
-
+var schedule = require('node-schedule')
+var xmlparser = require('xml2json')
+var http = require('http')
 var MongoClient = require("mongodb").MongoClient
 var url = "mongodb://localhost:27017/doriancheminade_webProject_splitWise"
 var port = 3000;
+var europeanBanquApi = {
+    host: 'www.ecb.europa.eu',
+    port: 80,
+    path: '/stats/eurofxref/eurofxref-daily.xml',
+    method: 'GET'
+}
+
 MongoClient.connect(url, function(err, db) {
-    var bills = db.collection('bills');
+    var bills = db.collection('bills')
+    var currencies = db.collection('currencies')
     
     app.get("/api/bill", function(req, resp){
         var u = req.query.user;
@@ -79,6 +89,55 @@ MongoClient.connect(url, function(err, db) {
 		    resp.json(d);
 		})
     })
+      
+    
+    app.get("/api/exchange-rates/",function(req,resp){
+        var req = http.request(europeanBanquApi, function(res) {
+            var xml = ''
+            res.on('data', function (chunk) {
+                xml += chunk
+            })
+            res.on('end', function(chunk) {
+                var txtjson = xmlparser.toJson(xml)
+                console.log('JSON: \n' + txtjson)
+                var json = JSON.parse(txtjson)
+                cur = json['gesmes:Envelope']['Cube']['Cube']['Cube']
+                cur.push({"currency":"EUR","rate":1})
+                resp.send(cur)
+                currencies.update(
+                    {"inuse":true},
+                    {"currencies":cur}
+                )
+            })
+            res.on('error', function(e) {
+                resp.send('failed to update currencies:'+e)
+            })
+        })
+        req.end()
+    })  
+    schedule.scheduleJob({hour: 16, minute: 50}, function(){        
+        var req = http.request(europeanBanquApi, function(res) {
+            var xml = ''
+            res.on('data', function (chunk) {
+                xml += chunk
+            })
+            res.on('end', function(chunk) {
+                var txtjson = xmlparser.toJson(xml)
+                console.log('JSON: \n' + txtjson)
+                var json = JSON.parse(txtjson)
+                cur = json['gesmes:Envelope']['Cube']['Cube']['Cube']
+                cur.push({"currency":"EUR","rate":1})
+                currencies.update(
+                    {"inuse":true},
+                    {"currencies":cur}
+                )
+            })
+            res.on('error', function(e) {
+                console.log('failed to update currencies:'+e)
+            })
+        })
+        req.end()
+    })
 
     app.listen(port, function() {
         console.log("Server running on port "+port)
@@ -87,3 +146,4 @@ MongoClient.connect(url, function(err, db) {
 
 app.use(express.static("public"))
 app.use("/bower_components", express.static("bower_components"))
+
