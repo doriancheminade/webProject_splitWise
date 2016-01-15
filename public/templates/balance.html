@@ -10,17 +10,17 @@
                     <table><tr>
                     <td ><span>{{bill.date | date:'yyyy MM dd'}}</span></td>
                     <td>{{bill.description}}</td>
-                    <td>you paid<br/>{{bill.currency}} {{balance.bill.ipayed(bill)}}</td>
-                    <td>you are owed<br/>{{bill.currency}} {{balance.bill.imowed(bill)}}</td>
+                    <td>you paid<br/>{{bill.currency_display}} {{balance.bill.ipayed(bill)}}</td>
+                    <td>you are owed<br/>{{bill.currency_display}} {{balance.bill.imowed(bill)}}</td>
                     </tr></table>
                 </uib-accordion-heading>
                 {{bill.description}}</br>
-                {{bill.currency}}{{bill.price}}
+                {{bill.currency_display}}{{bill.price}}
                 <table>
                     <tr ng-repeat="u in bill.split_with">
                         <td> &lt avatar here &gt</td>
                         <td>
-                            {{u.name}} payed {{bill.currency}}{{u.payed}} and owes {{bill.currency}}{{u.owe}}
+                            {{u.name}} payed {{bill.currency_display}}{{u.payed}} and owes {{bill.currency_display}}{{u.owe}}
                         </td>
                     </tr>
                 </table>

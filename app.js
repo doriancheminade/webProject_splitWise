@@ -91,7 +91,7 @@ MongoClient.connect(url, function(err, db) {
     })
       
     app.get("/api/update-exchange-rates/",function(req,resp){
-        var req = http.request(europeanBanquApi, function(res) {
+        var r = http.request(europeanBanquApi, function(res) {
             var xml = ''
             res.on('data', function (chunk) {
                 xml += chunk
@@ -112,12 +112,15 @@ MongoClient.connect(url, function(err, db) {
                 resp.send('failed to update currencies:'+e)
             })
         })
-        req.end()
+        r.end()
     })  
     app.get("/api/exchange-rates/",function(req,resp){
-        currencies.find({},function(err,data){
-            if(err){res.send(err)}
-            res.send(data)
+        currencies.find({inuse:true},function(err,data){
+            if(err) return resp.send(err)
+            data.toArray(function(err, d){
+		        if (err) return resp.json(err)
+		            resp.json(d[0].currencies);
+		        })
         })
     })
     

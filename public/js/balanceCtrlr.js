@@ -17,10 +17,33 @@ angular.module('indexModule').factory("billList",['$resource', function($resourc
         }
     });
 }]);
+angular.module('indexModule').factory("currencies",['$resource', function($resource) {
+    return $resource("/api/exchange-rates/",{},{
+        get: {
+            method:'GET',
+            isArray:true
+        }
+    });
+}]);
 angular.module('indexModule').controller('balanceCtrlr', [              
-    '$scope','$routeParams','balanceTotal','billList',                             
-    function balanceCtrlr($scope, $routeParams, balanceTotal, billList) { 
-        $scope.balance = {};
+    '$scope','$routeParams','balanceTotal','billList','currencies',                            
+    function balanceCtrlr($scope, $routeParams, balanceTotal, billList, currencies) { 
+        $scope.balance = {};        
+        
+        $scope.balance.currencies = [];
+        currencies.get({},
+            function(data){
+                $scope.balance.currencies = data.currencies
+            },function(err){
+                console.log('ERROR'+err)
+            }
+        );
+        $scope.balance.getRate = function(cur){
+            for(var i=0; i<$scope.balance.currencies.length; i++){
+                if(scope.balance.currencies[i].currency == cur) return scope.balance.currencies[i].rate
+            }
+            return 1
+        };
         
         $scope.balance.get_total = function(){
             balanceTotal.get({user:$routeParams.user}, '', 
@@ -53,7 +76,7 @@ angular.module('indexModule').controller('balanceCtrlr', [
                     }
                 }
             }
-        }      
+        }; 
         $scope.balance.bill.imowed = function(bill){
             if(bill.payed_by==$routeParams.user){
                 var r = 0;
@@ -63,8 +86,7 @@ angular.module('indexModule').controller('balanceCtrlr', [
                 return r;
             }            
             return 0;
-        }
+        };
         $scope.balance.get_list();
-                           
     }                                           
 ]); 
