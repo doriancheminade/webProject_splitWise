@@ -4,7 +4,7 @@ angular.module('indexModule').factory("balanceTotal",['$resource', function($res
         get: {
             method:'GET', 
             params:{user:'@user'},
-            isArray:false
+            isArray:true
         }
     });
 }]);
@@ -28,7 +28,7 @@ angular.module('indexModule').factory("currencies",['$resource', function($resou
 angular.module('indexModule').controller('balanceCtrlr', [              
     '$scope','$routeParams','balanceTotal','billList','currencies',                            
     function balanceCtrlr($scope, $routeParams, balanceTotal, billList, currencies) { 
-        $scope.balance = {};        
+        $scope.balance = {};
         
         $scope.balance.currencies = [];
         currencies.get({},

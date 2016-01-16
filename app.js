@@ -40,7 +40,8 @@ MongoClient.connect(url, function(err, db) {
                 payed_by: "$payed_by",
                 split_with: "$split_with",
                 price: "$price",
-                size: {$size: "$split_with"}
+                size: {$size: "$split_with"},
+                currency: "$currency"
                 }
             },{
             $unwind: "$split_with"
@@ -50,11 +51,12 @@ MongoClient.connect(url, function(err, db) {
                 received: {$cond: [{$eq: ["$payed_by", u]}, "$split_with", e]},
                 owed: {$cond: [{$eq: ["$payed_by", u]}, "$split_with", e]},
                 debt:{$cond: [{$eq: ["$payed_by", u]}, e, "$split_with"]},
-                size: "$size"
+                size: "$size",
+                currency: "$currency"
                 }            
             },{
             $group:{
-                _id: u,
+                _id: "$currency",
                 payed: {$sum: {$divide: ["$payed", "$size"]}},
                 received: {$sum: "$received.payed"},
                 owed: {$sum: "$owed.owe"},
@@ -63,7 +65,7 @@ MongoClient.connect(url, function(err, db) {
             }              
         ]).toArray(function(err, d){
 		    if (err) return resp.json(err)
-		    resp.json(d[0]);
+		    resp.json(d);
 		})		
     })
     app.get("/api/bill/list/",function(req,resp){
