@@ -1,0 +1,24 @@
+{
+  "name": "Split App",
+  "version": "1.0.0",
+  "description": "a web site to share expenses",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.3",
+    "express-session": "^1.13.0",
+    "md5": "^2.0.0",
+    "mongodb": "^2.1.4"
+  }
+  "scripts": {
+    "postinstall": "node scripts/postinstall.js",
+    "start": "node server.js",
+  },
+}
