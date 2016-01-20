@@ -1,0 +1,47 @@
+
+<div class=".col-md-4 split_col">
+    <div id="bill_total_list">
+        <h2>Balance</h2>
+        <table class="table">
+            <tr>
+                <td>total balance<td>
+                <td>you owe<td>
+                <td>you are owed<td>                
+            </tr>
+            <tr>
+                <td>EUR {{dashboard.totalbalance}}<td>
+                <td>EUR {{dashboard.youowe}}<td>
+                <td>EUR {{dashboard.youreowed}}<td>                
+            </tr>
+        </table>
+        <table class="table">
+            <div class="btn-group" role="group">            
+                    <button class="btn btn-primary" ng-click="">
+                        <span class="glyphicon glyphicon-align-justify"></span>
+                    </button>                    
+                    <button class="btn btn-primary" ng-click="">
+                        <span class="glyphicon glyphicon-stats"></span>
+                    </button>
+            </div>
+            <tr>
+                <td>you owe
+                    <div ng-show="!dashboard.bills.others.length">0</div>
+                    <div ng-show="dashboard.bills.others.length" class="jumbotron" ng-repeat="o in dashboard.bills.others">
+                        you owe {{o.owed}} to {{o._id}} 
+                    </div>
+                <td>
+                <td>you are owed
+                    <div ng-show="!dashboard.bills.you.length">0</div>
+                    <div ng-show="dashboard.bills.you.length" ng-repeat="y in dashboard.bills.you">
+                        {{y.name}} owes you {{y.owe}}
+                    </div>
+                <td>                
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<div class=".col-md-4 split_col">
+    <h4>your ad here</h4>
+</div>

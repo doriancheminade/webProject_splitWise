@@ -6,15 +6,15 @@
         <div class=".col-md-4 split_col">
             <table>
                 <tr><td>
-                    <a href="#"><button class="btn btn-primary">
+                    <a href="#dashboard"><button class="btn btn-primary">
                         <span class="glyphicon glyphicon-book-open"></span>
                         dashboard
                     </button></a>
                 </td></tr>
                 <tr><td>
-                    <a href="#"><button class="btn btn-primary">
+                    <a href="#recentActivity"><button class="btn btn-primary">
                         <span class="glyphicon glyphicon-flag"></span>
-                        dashboard
+                        recent activity
                     </button></a>
                 </td></tr>
                 <tr><td>            
@@ -25,7 +25,7 @@
                 </td></tr>
             </table>
         </div>
-        <div ng-view class="split_2cols">
+        <div ng-view class=".col-md-8 split_2cols">
         </div>
     </div>
     
@@ -36,6 +36,8 @@
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="js/index.js"></script>
     <script src="js/balanceCtrlr.js"></script>
+    <script src="js/dashboardCtrlr.js"></script>
+    <script src="js/recentAcivityCtrlr.js"></script>
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="bower_components/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet" type="text/css">

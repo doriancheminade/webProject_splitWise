@@ -91,6 +91,64 @@ MongoClient.connect(url, function(err, db) {
 		    resp.json(d);
 		})
     })
+    app.get("/api/bill/owedList/",function(req,resp){
+        var u = req.query.user;
+        
+        bills.aggregate([{
+            $unwind: "$split_with"
+            },{
+            $match: {
+                $and: [{
+                    payed_by: u
+                    },{
+                    settled: false
+                    }]
+                }
+            },{
+            $project: {
+                split_with: "$split_with",                
+                currency: "$currency"
+                }
+            },{
+            $group: {
+                _id: "$split_with.name",
+                owed: {$sum: "$split_with.owe"}
+                }
+            }
+        ]).toArray(function(err, d){
+		    if (err) return resp.json(err)
+		    resp.json(d);
+		})
+    })
+    app.get("/api/bill/oweList/",function(req,resp){
+        var u = req.query.user;
+        
+        bills.aggregate([{
+            $unwind: "$split_with"
+            },{
+            $match: {
+                $and: [{
+                    split_with: {name: u}
+                    },{
+                    settled: false
+                    }]
+                }
+            },{
+            $project: {
+                split_with: "$split_with",                
+                currency: "$currency"
+                }
+            },{
+            $group: {
+                _id: "$split_with.name",
+                owed: {$sum: "$split_with.owe"}
+                }
+            }
+        ]).toArray(function(err, d){
+		    if (err) return resp.json(err)
+		    resp.json(d);
+		})
+    })
       
     app.get("/api/update-exchange-rates/",function(req,resp){
         var r = http.request(europeanBanquApi, function(res) {
@@ -121,7 +179,7 @@ MongoClient.connect(url, function(err, db) {
             if(err) return resp.send(err)
             data.toArray(function(err, d){
 		        if (err) return resp.json(err)
-		            resp.json(d[0].currencies);
+		            resp.json(d.currencies);
 		        })
         })
     })
@@ -134,7 +192,7 @@ MongoClient.connect(url, function(err, db) {
             })
             res.on('end', function(chunk) {
                 var txtjson = xmlparser.toJson(xml)
-                console.log('JSON: \n' + txtjson)
+                //console.log('JSON: \n' + txtjson)
                 var json = JSON.parse(txtjson)
                 cur = json['gesmes:Envelope']['Cube']['Cube']['Cube']
                 cur.push({"currency":"EUR","rate":1})
@@ -142,6 +200,7 @@ MongoClient.connect(url, function(err, db) {
                     {"inuse":true},
                     {"currencies":cur}
                 )
+                console.log('updated currencies')
             })
             res.on('error', function(e) {
                 console.log('failed to update currencies:'+e)
