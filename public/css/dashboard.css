@@ -1,0 +1,15 @@
+/*ui-bootstrap stuf*/
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.split_vert {
+    display: flex;
+    flex:1 0 auto;
+}
+.split_col {
+    width:33%;
+}
+.split_2cols {
+    display: flex;
+    flex:1 0 auto;
+    width:66%;
+}

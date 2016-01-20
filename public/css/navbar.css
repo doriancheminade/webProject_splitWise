@@ -1,0 +1,23 @@
+:root {
+  --splitwise-color: green;
+}
+.navbar{
+    list-style-type: none;
+    display: block;
+    flex-flow:column;
+    background-color: var(--splitwise-color);
+}
+li a{
+    display: block;
+    color: white;
+}
+.toleft{
+    float: left;
+    border-left:300px solid var(--splitwise-color);
+    border-right:300px solid var(--splitwise-color);
+}
+.toright{
+    float: right;
+    border-left:100px solid var(--splitwise-color);
+    border-right:100px solid var(--splitwise-color);
+}
