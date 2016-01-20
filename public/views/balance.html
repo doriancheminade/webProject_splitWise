@@ -1,0 +1,62 @@
+
+
+<div class=".col-md-4 split_col">
+    <div id="bill_total_list">
+        <h2>Balance</h2>
+        
+        <uib-accordion close-others="true">
+            <uib-accordion-group heading="{{bill.payed_by}}" ng-repeat="bill in balance.bills">
+                <uib-accordion-heading>
+                    <table><tr>
+                    <td ><span>{{bill.date | date:'yyyy MM dd'}}</span></td>
+                    <td>{{bill.description}}</td>
+                    <td>you paid<br/>{{bill.currency}} {{balance.bill.ipayed(bill)}}</td>
+                    <td>you are owed<br/>{{bill.currency}} {{balance.bill.imowed(bill)}}</td>
+                    </tr></table>
+                </uib-accordion-heading>
+                {{bill.description}}</br>
+                {{bill.currency}}{{bill.price}}
+                <table>
+                    <tr ng-repeat="u in bill.split_with">
+                        <td> &lt avatar here &gt</td>
+                        <td>
+                            {{u.name}} payed {{bill.currency}}{{u.payed}} and owes {{bill.currency}}{{u.owe}}
+                        </td>
+                    </tr>
+                </table>
+            </uib-accordion-group>
+        </uib-accordion>
+        
+        <div>
+            <button class="btn btn-primary" ng-click="balance.get_list()">see more</button>            
+        </div>
+    </div>
+</div>
+
+<div class=".col-md-4 split_col">
+    <div class="btn-group">
+        <button class="btn btn-primary" ng-click="balance.get_total()">
+            <span class="glyphicon glyphicon-stats"></span>
+        </button>
+        <button class="btn btn-primary" >
+            <span class="glyphicon glyphicon-calendar"></span>
+        </button>
+        <button class="btn btn-primary" >
+            <span class="glyphicon glyphicon-align-justify"></span>
+        </button>
+    </div>
+    
+    <div id="balance_total">
+        <h3>Total</h3>
+        <div ng-repeat="t in balance.total">
+            <div class="jumbotron">
+            <h4>total in {{t._id}}</h4>
+            <h4>payed:<br/>{{t.payed}}</h4>
+            <h4>received:<br/>{{t.received}}</h4>
+            <h4>owed:<br/>{{t.owed}}</h4>
+            <h4>debt:<br/>{{t.debt}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+

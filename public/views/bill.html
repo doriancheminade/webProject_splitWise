@@ -1,0 +1,55 @@
+<div class="col-md-9">
+													<div class="panel panel-default">
+														<div class="panel-heading">
+															<h4>Dashboard
+																
+																<a class="btn btn-primary pull-right btn-adapt" data-toggle="modal" data-target="#addBill">Add a bill</a>
+															</h4>
+
+															
+
+															<div class="modal fade" id="addBill" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-controller="">
+																<div class="modal-dialog" role="document">
+																	<div class="modal-content">
+																		<div class="modal-header">
+																			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+																			<h4 class="modal-title" id="myModalLabel">Add a bill</h4>
+																		</div>
+																		<div class="modal-body">
+																			<form class="container-fluid" ng-submit="envoyer()">
+																				<div class="col-md-12">
+																					<span>Vous et : </span>
+																					<label for="inputFriend" class="sr-only">Vous et</label>
+																					<input id="inputFriend" ng-model="" class="form-control" placeholder="Friend" required autofocus></input>
+																				</div>
+																				<br><br>
+
+																				<div class="col-md-12">
+																					<label for="inputDescription" class="sr-only">Description</label>
+																					<textarea id="inputDescription" ng-model="" class="form-control" placeholder="Description" required autofocus></textarea>
+																					<br>
+																				</div>
+
+																				<div class="col-md-12">
+																					<label for="inputDescription" class="sr-only">Prix</label>
+																					<input id="inputPrix" ng-model="" class="form-control" placeholder="Prix" required autofocus></input>
+																					<br>
+																				</div>
+
+																				<div class="col-md-12">
+																					<input type="date" id="" name="" ng-model="" placeholder="Date"  class="form-control" required>
+																					<br>
+																				</div>
+
+																				
+																				
+
+																				
+
+																				<center><button class="btn btn-success" type="submit" ng-click="add()">Ajouter</button></center>
+																			</form>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
