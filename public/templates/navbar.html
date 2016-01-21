@@ -1,4 +1,13 @@
 <div class="navbar">
     <li><a class="toleft">MYSPLITWISE</a></li>
-    <li><a class="toright">Perso</a></li>
+    
+    <span uib-dropdown on-toggle="toggled(open)" class="toright">
+        <a href id="perso" uib-dropdown-toggle>
+            Perso
+        </a>
+        <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+            <li role="menuitem"><a href="#/login">login</a></li>
+            <li role="menuitem"><a href="#/register">register</a></li>
+        </ul>
+    </span>
 </div>

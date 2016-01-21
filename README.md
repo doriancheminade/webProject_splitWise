@@ -3,3 +3,6 @@ university project: using the MEAN stack to implement a web site that offers the
 
 mongodb server version must be 3.2.0
 
+a default user exist :
+    email:    dilbert@evilcompany.com
+    password: dilbert

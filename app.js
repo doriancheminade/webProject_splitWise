@@ -127,7 +127,6 @@ MongoClient.connect(url, function(err, db) {
             u = req.session.user.email;
         var n = parseInt(req.query.n);
         var l = 10;
-		console.log(u)
         
         bills.aggregate([{
             $match: {
@@ -144,7 +143,6 @@ MongoClient.connect(url, function(err, db) {
             }
         ]).toArray(function(err, d){
 		    if (err) return resp.json(err)
-		    console.log("DATA"+d)
 		    resp.json(d);
 		})
         }else{

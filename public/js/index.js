@@ -22,7 +22,7 @@ angular.module('indexModule').config(['$routeProvider', '$locationProvider', fun
             controller: 'RegisterController',
         })
         .otherwise({                      
-            template: 'does not exists'
+            template: ''
         });      
 }]);
 angular.module('indexModule').factory("balanceTotal",['$resource', function($resource) {
