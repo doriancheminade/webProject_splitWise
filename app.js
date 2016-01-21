@@ -4,6 +4,10 @@ var schedule = require('node-schedule')
 var xmlparser = require('xml2json')
 var http = require('http')
 var MongoClient = require("mongodb").MongoClient
+var bodyParser = require('body-parser')
+var cookieParser = require('cookie-parser')
+var md5 = require("md5")
+var session = require('express-session')
 var url = "mongodb://localhost:27017/doriancheminade_webProject_splitWise"
 var port = 3000;
 var europeanBanquApi = {
@@ -13,20 +17,66 @@ var europeanBanquApi = {
     method: 'GET'
 }
 
+app.use(cookieParser())
+app.use(session({
+    secret: "RMratsy2T2SLpwMvqglnkleW43j40iKp",
+    resave: true,
+    saveUninitialized: true
+}))
+app.use(bodyParser.json()) 
+app.use(bodyParser.urlencoded({ extended: true })) 
+
 MongoClient.connect(url, function(err, db) {
     var bills = db.collection('bills')
     var currencies = db.collection('currencies')
+    var users = db.collection('users')
+    
+    app.post('/users/register', function(req, res) {
+	    users.findOne({email:req.body.email}, function(err, user){
+		    if(err) return;
+		    if (user != null) res.json({error:"this account already exists"}).end()	
+		    else{
+		        users.insert({email:req.body.email, password:md5(req.body.password), pseudo:req.body.pseudo}, function(err, user){
+			        req.session.user = user.ops[0]
+			        res.json(user.ops[0]).end()
+		        })
+		    }
+	    })
+	});
+
+	app.post('/users/login', function(req, res) {
+	    users.findOne({email:req.body.email, password:md5(req.body.password)}, function(err, user){
+		    if(err) return;
+		    if (user == null) res.json({error:"incorrect user name"}).end()
+		    else{
+		        req.session.user = user
+		        res.json(user)
+		    }	
+	    })
+	});
+
+	app.get('/users/logout', function(req, res) {
+	    req.session.user = null
+	    res.end()
+	});
     
     app.get("/api/bill", function(req, resp){
-        var u = req.query.user;
-        var b = bills.find({user: u});
-        b.toArray(function(err, data){
+        var u;
+        if(req.session.user){
+            u = req.session.user.email;
+        bills.find({user: u})
+        .toArray(function(err, data){
 		    if (err) return next(err)
 		    resp.json(data)
 		})
+        }else{
+            resp.json([]);
+        }
     })
     app.get("/api/bill/total/", function(req, resp){
-        var u = req.query.user;
+        var u;
+        if(req.session.user){
+            u = req.session.user.email;
         var e = {"split_with":{}};
         
         bills.aggregate([{
@@ -66,12 +116,18 @@ MongoClient.connect(url, function(err, db) {
         ]).toArray(function(err, d){
 		    if (err) return resp.json(err)
 		    resp.json(d);
-		})		
+		})	
+        }else{
+            resp.json([]);
+        }	
     })
     app.get("/api/bill/list/",function(req,resp){
-        var u = req.query.user;
+        var u;
+        if(req.session.user && req.session.user.email){
+            u = req.session.user.email;
         var n = parseInt(req.query.n);
         var l = 10;
+		console.log(u)
         
         bills.aggregate([{
             $match: {
@@ -88,11 +144,17 @@ MongoClient.connect(url, function(err, db) {
             }
         ]).toArray(function(err, d){
 		    if (err) return resp.json(err)
+		    console.log("DATA"+d)
 		    resp.json(d);
 		})
+        }else{
+            resp.json([]);
+        }
     })
     app.get("/api/bill/owedList/",function(req,resp){
-        var u = req.query.user;
+        var u;
+        if(req.session.user){
+            u = req.session.user.email;
         
         bills.aggregate([{
             $unwind: "$split_with"
@@ -119,9 +181,14 @@ MongoClient.connect(url, function(err, db) {
 		    if (err) return resp.json(err)
 		    resp.json(d);
 		})
+        }else{
+            resp.json([]);
+        }
     })
     app.get("/api/bill/oweList/",function(req,resp){
-        var u = req.query.user;
+        var u;
+        if(req.session.user){
+            u = req.session.user.email;
         
         bills.aggregate([{
             $unwind: "$split_with"
@@ -148,6 +215,9 @@ MongoClient.connect(url, function(err, db) {
 		    if (err) return resp.json(err)
 		    resp.json(d);
 		})
+        }else{
+            resp.json([]);
+        }
     })
       
     app.get("/api/update-exchange-rates/",function(req,resp){
@@ -158,7 +228,6 @@ MongoClient.connect(url, function(err, db) {
             })
             res.on('end', function(chunk) {
                 var txtjson = xmlparser.toJson(xml)
-                console.log('JSON: \n' + txtjson)
                 var json = JSON.parse(txtjson)
                 cur = json['gesmes:Envelope']['Cube']['Cube']['Cube']
                 cur.push({"currency":"EUR","rate":1})
@@ -192,7 +261,6 @@ MongoClient.connect(url, function(err, db) {
             })
             res.on('end', function(chunk) {
                 var txtjson = xmlparser.toJson(xml)
-                //console.log('JSON: \n' + txtjson)
                 var json = JSON.parse(txtjson)
                 cur = json['gesmes:Envelope']['Cube']['Cube']['Cube']
                 cur.push({"currency":"EUR","rate":1})

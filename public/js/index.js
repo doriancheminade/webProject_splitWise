@@ -1,23 +1,30 @@
-angular.module('indexModule',['ngRoute','ngResource','ui.bootstrap']);
-angular.module('indexModule')
-    .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {                        
-        $routeProvider                                                                
-           .when('/balance', {
-                templateUrl: "templates/balance.html",                                               
-                controller:'balanceCtrlr',                             
-            })                                                                
-           .when('/dashboard', {
-                templateUrl: "templates/dashboard.html",                                               
-                controller:'dashboardCtrlr',                             
-            })                                                                
-           .when('/recentAcivity', {
-                templateUrl: "templates/recentAcivity.html",                                               
-                controller:'recentAcivityCtrlr',                             
-            })
-            .otherwise({                      
-                template: 'does not exists'
-            });      
-    }]);
+angular.module('indexModule',['ngRoute','ngResource','ui.bootstrap', 'ngCookies']);
+angular.module('indexModule').config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {                        
+    $routeProvider                                                                
+       .when('/balance', {
+            templateUrl: "templates/balance.html",                                               
+            controller:'balanceCtrlr',                             
+        })                                                                
+       .when('/dashboard', {
+            templateUrl: "templates/dashboard.html",                                               
+            controller:'dashboardCtrlr',                             
+        })                                                                
+       .when('/recentAcivity', {
+            templateUrl: "templates/recentAcivity.html",                                               
+            controller:'recentAcivityCtrlr',                             
+        })
+        .when('/login', {
+            templateUrl: 'templates/login.html', 
+            controller: 'LoginController',
+        })
+        .when('/register', {
+            templateUrl: 'templates/register.html', 
+            controller: 'RegisterController',
+        })
+        .otherwise({                      
+            template: 'does not exists'
+        });      
+}]);
 angular.module('indexModule').factory("balanceTotal",['$resource', function($resource) {
     return $resource("/api/bill/total",{},{
         get: {

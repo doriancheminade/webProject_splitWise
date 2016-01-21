@@ -1,9 +1,9 @@
 [
 {
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"evil_boss",
+        "name":"evil_boss@evilcompany.com",
         "owe":50,
         "payed":0
     }],
@@ -15,14 +15,14 @@
 "date":"1452447985",
 "type":"furniture"
 },{
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"dogbert",
+        "name":"dogbert@dogmail.com",
         "owe":0,
         "payed":25
     },{
-        "name":"ratbert",
+        "name":"ratbert@evilcompany.com",
         "owe":5,
         "payed":20
     }],
@@ -34,10 +34,10 @@
 "date":"1451843185",
 "type":"grocery"
 },{
-"payed_by":"ratbert",
+"payed_by":"ratbert@evilcompany.com",
 "split_with":
     [{
-        "name":"dilbert",
+        "name":"dilbert@evilcompany.com",
         "owe":1,
         "payed":21
     }],
@@ -49,14 +49,14 @@
 "date":"1454521585",
 "type":"clothing"
 },{
-"payed_by":"alice",
+"payed_by":"alice@evilcompany.com",
 "split_with":
     [{
-        "name":"rajesh",
+        "name":"rajesh@evilcompany.com",
         "owe":4,
         "payed":0
     },{
-        "name":"wally",
+        "name":"wally@evilcompany.com",
         "owe":3,
         "payed":1
     }],
@@ -68,10 +68,10 @@
 "date":"1483465585",
 "type":"gift"
 },{
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"catbert",
+        "name":"catbert@evilcompany.com",
         "owe":0.80,
         "payed":0.20
     }],
@@ -83,10 +83,10 @@
 "date":"1452447985",
 "type":"food"
 },{
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"catbert",
+        "name":"catbert@evilcompany.com",
         "owe":0.80,
         "payed":0.20
     }],
@@ -98,10 +98,10 @@
 "date":"1452447985",
 "type":"food"
 },{
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"catbert",
+        "name":"catbert@evilcompany.com",
         "owe":0.80,
         "payed":0.20
     }],
@@ -113,10 +113,10 @@
 "date":"1452447990",
 "type":"food"
 },{
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"catbert",
+        "name":"catbert@evilcompany.com",
         "owe":0.80,
         "payed":0.20
     }],
@@ -128,10 +128,10 @@
 "date":"1452448000",
 "type":"food"
 },{
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"catbert",
+        "name":"catbert@evilcompany.com",
         "owe":0.80,
         "payed":0.20
     }],
@@ -143,10 +143,10 @@
 "date":"1452448001",
 "type":"food"
 },{
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"catbert",
+        "name":"catbert@evilcompany.com",
         "owe":0.80,
         "payed":0.20
     }],
@@ -158,10 +158,10 @@
 "date":"1452448002",
 "type":"food"
 },{
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"catbert",
+        "name":"catbert@evilcompany.com",
         "owe":0.80,
         "payed":0.20
     }],
@@ -173,10 +173,10 @@
 "date":"1452448010",
 "type":"food"
 },{
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"catbert",
+        "name":"catbert@evilcompany.com",
         "owe":0.80,
         "payed":0.20
     }],
@@ -188,10 +188,10 @@
 "date":"1452448020",
 "type":"food"
 },{
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"catbert",
+        "name":"catbert@evilcompany.com",
         "owe":0.80,
         "payed":0.20
     }],
@@ -203,10 +203,10 @@
 "date":"1452448030",
 "type":"food"
 },{
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"catbert",
+        "name":"catbert@evilcompany.com",
         "owe":0.80,
         "payed":0.20
     }],
@@ -218,10 +218,10 @@
 "date":"1452448040",
 "type":"food"
 },{
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"catbert",
+        "name":"catbert@evilcompany.com",
         "owe":0.80,
         "payed":0.20
     }],
@@ -232,10 +232,10 @@
 "date":"1452448050",
 "type":"food"
 },{
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"catbert",
+        "name":"catbert@evilcompany.com",
         "owe":0.80,
         "payed":0.20
     }],
@@ -247,10 +247,10 @@
 "date":"1452448070",
 "type":"food"
 },{
-"payed_by":"dilbert",
+"payed_by":"dilbert@evilcompany.com",
 "split_with":
     [{
-        "name":"catbert",
+        "name":"catbert@evilcompany.com",
         "owe":0,
         "payed":1
     }],
