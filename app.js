@@ -73,17 +73,30 @@ MongoClient.connect(url, function(err, db) {
             resp.json([]);
         }
     })
-    app.get("/api/bill/total/", function(req, resp){
+    app.get("/api/bill/total/:month?*", function(req, resp){
         var u;
+        var month;
+        var date = new Date();
+        if(req.query.month){
+            month = {date:{
+                $gte: new Date(date.getFullYear(), date.getMonth(), 1)
+                }
+            }
+        }else{
+            month = { price: { $exists: true } } ;
+        }
         if(req.session.user){
             u = req.session.user.email;
         var e = {"split_with":{}};
         
         bills.aggregate([{
             $match: {
-                $or: 
-                [{payed_by: u}, 
-                {split_with: {$elemMatch: {name: u}}}
+                $and: [{
+                    $or: [
+                        {payed_by: u}, 
+                        {split_with: {$elemMatch: {name: u}}}
+                    ]},
+                    month
                 ]}
             },{
             $project: {
@@ -120,6 +133,33 @@ MongoClient.connect(url, function(err, db) {
         }else{
             resp.json([]);
         }	
+    })
+    app.get("/api/bill/upcomming/list", function(req,resp){
+        var u;
+        var d = (new Date().getTime()/1000).toFixed(0);
+        
+        if(req.session.user && req.session.user.email){
+            u = req.session.user.email;
+        bills.aggregate([{
+            $match: {
+                $and:[
+                    {$or:[
+                        {payed_by: u}, 
+                        {split_with: {$elemMatch: {name: u}}}
+                    ]},
+                    {due:{ $gte: d }},
+                    {reccurent: {$exists: true}}
+                ]}
+            },{
+            $sort: {date:-1}
+            }
+        ]).toArray(function(err, d){
+		    if (err) return resp.json(err)
+		    resp.json(d);
+		})
+        }else{
+            resp.json([]);
+        }    
     })
     app.get("/api/bill/list/",function(req,resp){
         var u;

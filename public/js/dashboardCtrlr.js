@@ -8,6 +8,7 @@ angular.module('indexModule').controller('dashboardCtrlr', [
         $scope.dashboard.youreowed = 0;
         $scope.dashboard.totalbalance = 0;
         $scope.dashboard.bills = {you: {}, others: {}};
+        $scope.dashboard.graph = false;
         
         currencies.get({},
             function(data){
@@ -29,19 +30,17 @@ angular.module('indexModule').controller('dashboardCtrlr', [
         
         $scope.dashboard.total = function(){
             balanceTotal.get({user:$routeParams.user}, '', 
-                function(data){ 
-                    var t = 0;
+                function(data){
                     var owe = 0;
                     var owed = 0;
                     for(var i=0; i<data.length; i++){
                         var rate = $scope.dashboard.getRate(data[i]._id);
                         owe += data[i].debt * rate;
                         owed += data[i].owed * rate;
-                        t += owed - owe;
                     }
                     $scope.dashboard.youowe = owe.toFixed(2);
                     $scope.dashboard.youreowed = owed.toFixed(2);
-                    $scope.dashboard.totalbalance = t.toFixed(2);
+                    $scope.dashboard.totalbalance = ($scope.dashboard.youreowed - $scope.dashboard.youowe).toFixed(2);
                 },function(err){
                     console.log(err);
                 })    
@@ -50,7 +49,7 @@ angular.module('indexModule').controller('dashboardCtrlr', [
         $scope.dashboard.billlist = function(){
             oweList.get({user:$routeParams.user},
                 function(data){
-                        $scope.dashboard.bills.you = data;                
+                        $scope.dashboard.bills.others = data;                
                 },function(err){
                     console.log(err);
                 }
@@ -58,7 +57,7 @@ angular.module('indexModule').controller('dashboardCtrlr', [
             owedList.get({user:$routeParams.user},
                 function(data){
                     for(var i=0; i<data.length; i++){
-                        $scope.dashboard.bills.others = data;
+                        $scope.dashboard.bills.you = data;
                     }
                 },function(err){
                     console.log(err);

@@ -29,7 +29,7 @@ angular.module('indexModule').factory("balanceTotal",['$resource', function($res
     return $resource("/api/bill/total",{},{
         get: {
             method:'GET', 
-            params:{user:'@user'},
+            params:{user:'@user', month:'@month'},
             isArray:true
         }
     });
@@ -62,6 +62,15 @@ angular.module('indexModule').factory("owedList",['$resource', function($resourc
 }]);
 angular.module('indexModule').factory("oweList",['$resource', function($resource) {
     return $resource("/api/bill/oweList",{},{
+        get: {
+            method:'GET',
+            params:{user:'@user'},
+            isArray:true
+        }
+    });
+}]);
+angular.module('indexModule').factory("upcomminglist",['$resource', function($resource) {
+    return $resource("/api/bill/upcomming/list",{},{
         get: {
             method:'GET',
             params:{user:'@user'},

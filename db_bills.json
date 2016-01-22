@@ -34,6 +34,25 @@
 "date":"1451843185",
 "type":"grocery"
 },{
+"payed_by":"owner",
+"split_with":
+    [{
+        "name":"dilbert@evilcompany.com",
+        "owe":1420,
+        "payed":0
+    }],
+"description":"rent",
+"price":1420,
+"settled":false,
+"currency":"USD",
+"image":"",
+"date":"1451843185",
+"reccurent":true,
+"last":true,
+"due":1454029296,
+"every":"00:01:00",
+"type":"home"
+},{
 "payed_by":"ratbert@evilcompany.com",
 "split_with":
     [{

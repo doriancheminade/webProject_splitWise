@@ -1,6 +1,6 @@
 
 
-<div class=".col-md-4 split_col">
+<div class=".col-md-4 split_col2">
     <div id="bill_total_list">
         <h2>Balance</h2>
         
@@ -18,7 +18,6 @@
                 {{bill.currency}}{{bill.price}}
                 <table>
                     <tr ng-repeat="u in bill.split_with">
-                        <td> &lt avatar here &gt</td>
                         <td>
                             {{u.name}} payed {{bill.currency}}{{u.payed}} and owes {{bill.currency}}{{u.owe}}
                         </td>
@@ -33,29 +32,61 @@
     </div>
 </div>
 
-<div class=".col-md-4 split_col">
+<div class=".col-md-4 split_col2">
     <div class="btn-group">
         <button class="btn btn-primary" ng-click="balance.get_total()">
             <span class="glyphicon glyphicon-stats"></span>
         </button>
-        <button class="btn btn-primary" >
+        <button class="btn btn-primary" ng-click="balance.get_monthtrend()">
             <span class="glyphicon glyphicon-calendar"></span>
         </button>
-        <button class="btn btn-primary" >
+        <button class="btn btn-primary" ng-click="balance.get_upcomming()">
             <span class="glyphicon glyphicon-align-justify"></span>
         </button>
     </div>
     
-    <div id="balance_total">
+    <div id="balance_total" ng-show="balance.showtotal">
         <h3>Total</h3>
-        <div ng-repeat="t in balance.total">
-            <div class="jumbotron">
+        <div ng-repeat="t in balance.total" class="jumbotron" ng-show="balance.total.length">
             <h4>total in {{t._id}}</h4>
-            <h4>payed:<br/>{{t.payed}}</h4>
-            <h4>received:<br/>{{t.received}}</h4>
-            <h4>owed:<br/>{{t.owed}}</h4>
-            <h4>debt:<br/>{{t.debt}}</h4>
+            <h4>payed:<br/>{{t.payed.toFixed(2)}}</h4>
+            <h4>received:<br/>{{t.received.toFixed(2)}}</h4>
+            <h4>owed:<br/>{{t.owed.toFixed(2)}}</h4>
+            <h4>debt:<br/>{{t.debt.toFixed(2)}}</h4>
+        </div>
+        <div ng-show="!balance.total.length" class="jumbotron">
+            <h4>payed:<br/>EUR 0</h4>
+            <h4>received:<br/>EUR 0</h4>
+            <h4>owed:<br/>EUR 0</h4>
+            <h4>debt:<br/>EUR 0</h4>
+        </div>
+    </div>
+    <div id="balance_monthtrend" ng-show="balance.showtrend">
+        <h3>trend this month</h3>
+        <div ng-repeat="t in balance.monthtotal" class="jumbotron"  ng-show="balance.monthtotal.length">
+            <h4>total in {{t._id}}</h4>
+            <h4>payed:<br/>{{t.payed.toFixed(2)}}</h4>
+            <h4>received:<br/>{{t.received.toFixed(2)}}</h4>
+            <h4>owed:<br/>{{t.owed.toFixed(2)}}</h4>
+            <h4>debt:<br/>{{t.debt.toFixed(2)}}</h4>
+        </div>
+        <div ng-show="!balance.monthtotal.length" class="jumbotron">
+            <h4>payed:<br/>EUR 0</h4>
+            <h4>received:<br/>EUR 0</h4>
+            <h4>owed:<br/>EUR 0</h4>
+            <h4>debt:<br/>EUR 0</h4>
+        </div>
+    </div>
+    <div id="balance_upcomming" ng-show="balance.showupcomming">
+        <h3>upcomming bills</h3>
+        <div ng-repeat="t in balance.monthtotal" class="jumbotron"  ng-show="balance.monthtotal.length">
+            <h4>{{t.currency}}{{t.price}} to pay</h4>
+            <div ng-repeat="u in t.split_with">
+                <h4>{{u.name}} have {{t.currency}}{{u.owe}} to pay, {{t.currency}}{{u.payed}} already payed</h4>
             </div>
+        </div>
+        <div ng-show="!balance.monthtotal.length" class="jumbotron">
+            <h4>no upcomming bill</h4>
         </div>
     </div>
 </div>

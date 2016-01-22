@@ -1,5 +1,5 @@
 
-<div class=".col-md-4 split_col">
+<div class=".col-md-4 split_col2">
     <div id="bill_total_list">
         <h2>Balance</h2>
         <table class="table">
@@ -16,24 +16,42 @@
         </table>
         <table class="table">
             <div class="btn-group" role="group">            
-                    <button class="btn btn-primary" ng-click="">
+                    <button class="btn btn-primary" ng-click="dashboard.graph = false">
                         <span class="glyphicon glyphicon-align-justify"></span>
                     </button>                    
-                    <button class="btn btn-primary" ng-click="">
+                    <button class="btn btn-primary" ng-click="dashboard.graph = true">
                         <span class="glyphicon glyphicon-stats"></span>
                     </button>
             </div>
             <tr>
-                <td>you owe
-                    <div ng-show="!dashboard.bills.others.length">0</div>
-                    <div ng-show="dashboard.bills.others.length" class="jumbotron" ng-repeat="o in dashboard.bills.others">
-                        you owe {{o.owed}} to {{o._id}} 
+                <td>
+                    <div ng-show="!dashboard.bills.others.length"><h2>you owe nothing</h2></div>
+                    <div ng-show="dashboard.bills.others.length"><h2>you owe</h2></div>
+                    <div ng-show="dashboard.bills.others.length" ng-repeat="o in dashboard.bills.others">
+                        <div ng-show="!dashboard.graph" class="jumbotron">
+                            you owe EUR{{o.owed.toFixed(2)}} to {{o._id}} 
+                        </div>
+                        <div ng-show="dashboard.graph">
+                            <h4>{{o._id}}</h4>
+                            <uib-progressbar value="o.owed.toFixed(0)" max="dashboard.youowe">
+                            <span style="color:#2B2D33;">{{o.owed.toFixed(2)}}EUR</span>
+                            </uib-progressbar>
+                        </div>
                     </div>
                 <td>
-                <td>you are owed
-                    <div ng-show="!dashboard.bills.you.length">0</div>
+                <td>
+                    <div ng-show="!dashboard.bills.you.length"><h2>you are owed nothing</h2></div>
+                    <div ng-show="dashboard.bills.you.length"><h2>you are owed</h2></div>
                     <div ng-show="dashboard.bills.you.length" ng-repeat="y in dashboard.bills.you">
-                        {{y.name}} owes you {{y.owe}}
+                        <div ng-show="!dashboard.graph" class="jumbotron">
+                            {{y._id}} owes you EUR {{y.owed.toFixed(2)}}
+                        </div>
+                        <div ng-show="dashboard.graph">
+                            <h4>{{y._id}}</h4>
+                            <uib-progressbar value="y.owed.toFixed(0)" max="dashboard.youreowed">
+                                <span style="color:#2B2D33;">{{y.owed.toFixed(2)}} EUR</span>
+                            </uib-progressbar>
+                        </div>
                     </div>
                 <td>                
             </tr>
@@ -42,6 +60,6 @@
 </div>
 
 
-<div class=".col-md-4 split_col">
+<div class=".col-md-4 split_col2">
     <h4>your ad here</h4>
 </div>
